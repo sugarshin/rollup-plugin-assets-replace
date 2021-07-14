@@ -20,7 +20,7 @@ export function assetsReplace(options: Options): Plugin {
         const assetName = entry[0];
         if (!filter(assetName)) {
           continue
-        };
+        }
         const result = map(...entry);
         if (assetName !== result.fileName) {
           delete bundle[assetName];
