@@ -1,5 +1,7 @@
 # rollup-plugin-assets-replace
 
+[![CircleCI](https://circleci.com/gh/sugarshin/rollup-plugin-assets-replace/tree/main.svg?style=svg)](https://circleci.com/gh/sugarshin/rollup-plugin-assets-replace/tree/main)
+
 > Rollup plugin which replaces assets
 
 ## Description
