@@ -7,7 +7,7 @@ export type Options = {
   include?: FilterPattern;
   exclude?: FilterPattern;
   map(fileName: string, asset: OutputAsset): OutputAsset;
-}
+};
 
 export function assetsReplace(options: Options): Plugin {
   const filter = createFilter(options.include, options.exclude);
@@ -15,11 +15,11 @@ export function assetsReplace(options: Options): Plugin {
   return {
     name: 'assets-replace',
     generateBundle(_, bundle) {
-      const entries = Object.entries(bundle).filter(onlyAsset)
+      const entries = Object.entries(bundle).filter(onlyAsset);
       for (const entry of entries) {
         const assetName = entry[0];
         if (!filter(assetName)) {
-          continue
+          continue;
         }
         const result = map(...entry);
         if (assetName !== result.fileName) {

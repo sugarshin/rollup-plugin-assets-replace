@@ -40,7 +40,7 @@ const fixture: OutputBundle = {
     fileName: 'other.img',
     implicitlyLoadedBefore: [],
     importedBindings: {},
-    imports:[],
+    imports: [],
     referencedFiles: [],
   },
 };
@@ -58,7 +58,7 @@ test('should be replaced .txt', (t) => {
   };
   const plugin = assetsReplace(options) as AssetsReplacePlugin;
   plugin.generateBundle.call(pluginContext, normalizedOutputOptions, fixture, true);
-  t.snapshot(fixture)
+  t.snapshot(fixture);
 });
 
 test('should be replaced .d.ts', (t) => {
@@ -70,12 +70,12 @@ test('should be replaced .d.ts', (t) => {
       }
       asset.source = asset.source.replace(
         /('|"|`)@sugarshin\/([^/'"`])/g,
-        (_, p1, p2) => `${p1}@ins0/sugarshin_${p2}`,
+        (_, p1, p2) => `${p1}@ins0/sugarshin_${p2}`
       );
       return asset;
     },
   };
   const plugin = assetsReplace(options) as AssetsReplacePlugin;
   plugin.generateBundle.call(pluginContext, normalizedOutputOptions, fixture, true);
-  t.snapshot(fixture)
+  t.snapshot(fixture);
 });
