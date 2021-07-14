@@ -1,0 +1,60 @@
+{
+  "name": "rollup-plugin-assets-replace",
+  "version": "0.0.0",
+  "description": "Rollup plugin which replaces assets",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+
+  "scripts": {
+    "test": "ava",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
+    "clean": "rm -rf ./lib",
+    "prebuild": "npm run clean",
+    "postbuild": "tsc --emitDeclarationOnly"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugarshin/rollup-plugin-assets-replace.git"
+  },
+  "keywords": [
+    "rollup",
+    "plugin",
+    "rollup-plugin",
+    "assets",
+    "replace"
+  ],
+  "author": "sugarshin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sugarshin/rollup-plugin-assets-replace/issues"
+  },
+  "homepage": "https://github.com/sugarshin/rollup-plugin-asses-replace#readme",
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "files": [
+      "!**/fixtures/**"
+    ]
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^4.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "8.2.1",
+    "@tsconfig/node10": "1.0.8",
+    "@types/node": "14.17.5",
+    "ava": "3.15.0",
+    "rollup": "2.53.1",
+    "ts-node": "10.1.0",
+    "type-fest": "1.2.2",
+    "typescript": "4.3.5"
+  },
+  "peerDependencies": {
+    "rollup": "^2.0.0"
+  }
+}
