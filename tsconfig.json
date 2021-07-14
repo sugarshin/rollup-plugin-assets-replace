@@ -2,8 +2,7 @@
   "extends": "@tsconfig/node10",
   "compilerOptions": {
     "outDir": "lib",
-    "declaration": true,
-    "importHelpers": false
+    "declaration": true
   },
   "include": [
     "src"
