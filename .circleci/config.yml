@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  npm: sugarshin/npm@0.1.6
+  npm: sugarshin/npm@0.1.7
 
 references:
   workspace_root: &workspace_root ~/workspace
