@@ -5,6 +5,13 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prepare": "npx is-ci || husky install",
     "lint-staged": "lint-staged",
