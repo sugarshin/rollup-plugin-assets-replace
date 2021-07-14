@@ -1,0 +1,97 @@
+version: 2.1
+
+references:
+  workspace_root: &workspace_root ~/workspace
+  NODE_MODULES_CACHE_KEY: &NODE_MODULES_CACHE_KEY v1-dependencies-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_WORKFLOW_WORKSPACE_ID }}-{{ checksum "package-lock.json" }}-node-modules
+
+executors:
+  nodejs:
+    working_directory: *workspace_root
+    docker:
+      - image: cimg/node:14.17.3
+
+commands:
+  restore_npm_cache:
+    steps:
+      - restore_cache:
+          name: Restore npm cache
+          keys:
+            - v1-npm-cache-{{ checksum "package-lock.json" }}
+            - v1-npm-cache-
+  save_npm_cache:
+    steps:
+      - save_cache:
+          name: Save npm cache
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+  restore_node_modules:
+    steps:
+      - restore_cache:
+          name: Restore node_modules
+          keys:
+            - *NODE_MODULES_CACHE_KEY
+  save_node_modules:
+    steps:
+      - save_cache:
+          name: Save node_modules
+          key: *NODE_MODULES_CACHE_KEY
+          paths:
+            - node_modules
+
+jobs:
+  test:
+    executor:
+      name: nodejs
+    steps:
+      - checkout
+      - restore_npm_cache
+      - run: npm ci
+      - save_npm_cache
+      - save_node_modules
+      - run:
+          name: Lint
+          command: |
+            npm run lint:eslint
+            npm run lint:prettier
+      - run:
+          name: Typecheck
+          command: npm run typecheck
+      - run:
+          name: Test
+          command: npm test -- -v
+
+  build:
+    executor:
+      name: nodejs
+    steps:
+      - checkout
+      - restore_node_modules
+      - run:
+          name: Build
+          command: npm run build
+      - store_artifacts:
+          path: lib
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - lib
+
+workflows:
+  'Test, Build and Release':
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+      - npm/release:
+          executor: nodejs
+          attach-workspace: true
+          workspace-root: *workspace_root
+          tagging: true
+          ssh-fingerprints: ''
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
