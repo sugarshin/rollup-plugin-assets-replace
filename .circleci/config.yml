@@ -89,7 +89,7 @@ workflows:
           attach-workspace: true
           workspace-root: *workspace_root
           tagging: true
-          ssh-fingerprints: ''
+          ssh-fingerprints: '68:db:41:61:16:8e:7d:76:f9:b3:c1:d4:02:27:1c:a6'
           requires:
             - build
           filters:
