@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  npm: sugarshin/npm@0.1.6
+
 references:
   workspace_root: &workspace_root ~/workspace
   NODE_MODULES_CACHE_KEY: &NODE_MODULES_CACHE_KEY v1-dependencies-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_WORKFLOW_WORKSPACE_ID }}-{{ checksum "package-lock.json" }}-node-modules
