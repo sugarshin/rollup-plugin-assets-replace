@@ -30,7 +30,7 @@ export default {
     assetsReplace({
       include: [],
       exclude: [],
-      map: (assetName, asset) => {},
+      map: (assetName, asset) => asset,
     }),
   ],
 }
@@ -38,7 +38,7 @@ export default {
 
 ### Example
 
-For example, replace module name in typescript declaration file.
+For example, replace module name in TypeScript declaration files.
 
 ```js
 // rollup.config.js
@@ -65,6 +65,19 @@ export default {
     }),
   ],
 };
+```
+
+### Type Declarations
+
+```ts
+import type { OutputAsset, Plugin } from 'rollup';
+import type { FilterPattern } from '@rollup/pluginutils';
+export declare type Options = {
+    include?: FilterPattern;
+    exclude?: FilterPattern;
+    map(fileName: string, asset: OutputAsset): OutputAsset;
+};
+export declare function assetsReplace(options: Options): Plugin;
 ```
 
 ## License

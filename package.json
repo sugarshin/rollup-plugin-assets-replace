@@ -43,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/sugarshin/rollup-plugin-assets-replace/issues"
   },
-  "homepage": "https://github.com/sugarshin/rollup-plugin-asses-replace#readme",
+  "homepage": "https://github.com/sugarshin/rollup-plugin-assets-replace#readme",
   "ava": {
     "extensions": [
       "ts"

@@ -1,7 +1,6 @@
 {
    "*.{ts,js}": [
      "npm run fix:eslint",
-     "npm run fix:prettier",
-     "git add"
+     "npm run fix:prettier"
    ]
 }
