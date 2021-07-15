@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-assets-replace",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Rollup plugin which replaces assets",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
@@ -22,6 +22,10 @@
     "fix:prettier": "npm run _prettier -- --write",
     "typecheck": "tsc --noEmit",
     "test": "ava",
+    "_v": "npm --no-git-tag-version version",
+    "patch": "npm run _v patch",
+    "minor": "npm run _v minor",
+    "major": "npm run _v major",
     "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "clean": "rm -rf ./lib",
     "prebuild": "npm run clean",
