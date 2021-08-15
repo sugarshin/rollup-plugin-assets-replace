@@ -1,6 +1,7 @@
 # rollup-plugin-assets-replace
 
 [![CircleCI](https://circleci.com/gh/sugarshin/rollup-plugin-assets-replace/tree/main.svg?style=svg)](https://circleci.com/gh/sugarshin/rollup-plugin-assets-replace/tree/main)
+[![npm version](https://img.shields.io/npm/v/rollup-plugin-assets-replace.svg)](https://www.npmjs.org/package/rollup-plugin-assets-replace)
 
 > Rollup plugin which replaces assets
 
